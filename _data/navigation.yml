@@ -10,5 +10,7 @@
   link: /list.html
 - name: AnimalColor
   link: /animal.html
-- name: Companion
+- name: 仲間
   link: /companion.html
+- name: 顧問
+  link: /advisor.html

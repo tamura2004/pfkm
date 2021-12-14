@@ -1,0 +1,20 @@
+---
+layout: default
+title: 顧問
+---
+<h1>顧問</h1>
+<table class="table table-hover table-striped">
+  {% assign header = site.data.advisors[0] %}
+  <tr>
+    {% for pair in header %}
+      <th>{{ pair[0] }}</th>
+    {% endfor %}
+  </tr>
+  {% for advisor in site.data.advisors %}
+  <tr>
+    {% for pair in advisor %}
+    <td>{{ pair[1] }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>

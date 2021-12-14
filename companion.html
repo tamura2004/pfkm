@@ -1,16 +1,16 @@
 ---
 layout: default
-title: Home
+title: 仲間
 ---
-<h1>Companion</h1>
+<h1>{{ page.title }}</h1>
 <table class="table table-hover table-striped">
-  {% assign header = page.companions[0] %}
+  {% assign header = site.data.companions[0] %}
   <tr>
     {% for pair in header %}
     <th>{{ pair[0] }}</th>
     {% endfor %}
   </tr>
-  {% for companion in page.companions %}
+  {% for companion in site.data.companions %}
   <tr>
     {% for pair in companion %}
     <td>{{ pair[1] }}</td>
@@ -18,3 +18,27 @@ title: Home
   </tr>
   {% endfor %}
 </table>
+
+<h1>顧問</h1>
+<table class="table table-hover table-striped">
+  <tr>
+    <th>顧問</th>
+    {% for advisor in site.data.advisors %}
+    <th>{{ advisor["顧問名"] }}</th>
+    {% endfor %}
+  </tr>
+  <tr>
+    <td>能力</td>
+    {% for advisor in site.data.advisors %}
+    <td>{{ advisor["重要能力"] }}</td>
+    {% endfor %}
+  </tr>
+  {% for companion_advisor in page.companion_advisors %}
+  <tr>
+    {% for cell in companion_advisor %}
+    <td>{{ cell }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+
