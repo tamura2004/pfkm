@@ -5,7 +5,6 @@ module Jekyll
     def generate(site)
       page = site.pages.detect { |page| page.name == "companion.html" }
 
-      pp site.data
       companion_names = site.data["companions"].map { |companion| companion["名前"] }
       advisor_names = site.data["advisors"].map { |advisor| advisor["名前"] }
 

@@ -1,0 +1,25 @@
+---
+layout: default
+title: Artisan
+---
+<!-- {{ site.data.kingdom_abilities | inspect }}
+{{ page.artisan_kingdom_abilities | inspect }}
+{{ site.data.artisans | inspect }} -->
+
+<h1>職人</h1>
+<table class="table table-hover table-striped">
+  {% assign header = site.data.artisans[0] %}
+  <tr>
+    <th>職人</th>
+    {% for ability in site.data.kingdom_abilities %}
+      <th>{{ ability }}</th>
+    {% endfor %}
+  </tr>
+  {% for row in page.artisan_kingdom_abilities %}
+  <tr>
+    {% for cell in row %}
+    <td>{{ cell }}</td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
