@@ -1,0 +1,73 @@
+---
+name: 犬
+colors: [red, blue]
+ac:
+  base: 10
+  dex: 5
+  cha: 5
+  dodge: 1
+  defence: 3
+  crane: 1
+  cranewing: 4
+  deflect: 4
+  skin: 4
+  armor: 4
+  shield: 4
+classes:
+  1: monk
+  2: ftr
+  3: cle
+  4: thf
+  5: rog
+  6: rog
+  7: rog
+  8: rog
+  9: rog
+  10: rog
+feats:
+  1: [dodge, cranestyle]
+  2:
+  3: [bite]
+  4:
+  5: [sleep]
+  6:
+  7:
+  8:
+  9:
+  10:
+spells:
+  1: [weak, hope, dash]
+  2:
+  3:
+  4:
+  5:
+  6:
+  7:
+  8: [inject, map]
+  9:
+  10:
+---
+<h1>Animal Color</h1>
+{% assign ac = 0 %}
+{% for kv in page.ac %}
+{{ kv | inspect }}
+{% assign ac = ac | plus: kv[1] %}
+{% endfor %}
+<h2>{{ ac }}</h2>
+<table class="table table-hover table-striped">
+  {% for i in (1..10) %}
+  <tr class="row">
+    <th class="col-sm-1">{{i}}</th>
+    <td class="col-sm-2">
+      <span>{{ page.classes[i] }}</span>
+    </td>
+    <td class="col-sm-9">
+      {% for feats in page.feats[i] %}
+      <span>《{{ feats }}》</span>
+      {% endfor %} {% for spells in page.spells[i] %}
+      <span>〈{{ spells }}〉</span>
+      {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
