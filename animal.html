@@ -1,21 +1,26 @@
 ---
-layout: default
 title: AnimalColor
 ---
 <h1>Animal Color</h1>
 <table class="table table-hover table-striped">
-  {% assign header = page.animals %}
   <tr>
     <th>-</th>
-    {% for label in header %}
-      <th>{{ label }}</th>
+    {% for color in site.data.colors %}
+    <th>{{ color }}</th>
     {% endfor %}
   </tr>
-  {% for colors in page.animal_color %}
-    <tr>
-      {% for color in colors %}
-        <td>{{ color }}</td>
-      {% endfor %}
-    </tr>
+  {% for animal in site.animals %}
+  <tr>
+    <th>
+      <a href="{{ animal.url }}"> {{ animal.title }} </a>
+    </th>
+    {% for color in site.data.colors %}
+    {% if animal.colors contains color %}
+    <td>○</td>
+    {% else %}
+    <td>−</td>
+    {% endif %}
+    {% endfor %}
+  </tr>
   {% endfor %}
 </table>

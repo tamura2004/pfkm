@@ -1,6 +1,8 @@
 collections:
   authors:
     output: true
+  animals:
+    output: true
 
 defaults:
   - scope:

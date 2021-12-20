@@ -1,24 +1,28 @@
 ---
-layout: default
 title: Artisan
 ---
-<!-- {{ site.data.kingdom_abilities | inspect }}
-{{ page.artisan_kingdom_abilities | inspect }}
-{{ site.data.artisans | inspect }} -->
-
 <h1>職人</h1>
 <table class="table table-hover table-striped">
-  {% assign header = site.data.artisans[0] %}
   <tr>
     <th>職人</th>
     {% for ability in site.data.kingdom_abilities %}
-      <th>{{ ability }}</th>
+    <th>{{ ability }}</th>
     {% endfor %}
   </tr>
-  {% for row in page.artisan_kingdom_abilities %}
+  {% for artisan in site.data.artisans %}
   <tr>
-    {% for cell in row %}
-    <td>{{ cell }}</td>
+    <th>{{ artisan["職人"] }}</th>
+    {% for ability in site.data.kingdom_abilities %}
+    <td>
+      {% case ability %}
+      {% when artisan["能力1"] %}
+      {{ artisan["ランク1"] }}
+      {% when artisan["能力2"] %}
+      {{ artisan["ランク2"] }}
+      {% else %}
+      −
+      {% endcase %}
+    </td>
     {% endfor %}
   </tr>
   {% endfor %}
