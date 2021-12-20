@@ -1,3 +1,7 @@
 .current { color: green; }
 
+a { color: #337ab7; text-decoration-line: none; text-decoration-thickness: initial; font-weight: 400; }
+
+a:focus, a:hover { color: #23527c; text-decoration-line: underline; text-decoration-thickness: initial; font-weight: 400; }
+
 /*# sourceMappingURL=styles.css.map */

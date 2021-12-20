@@ -1,6 +1,7 @@
 ---
 title: AnimalColor
 ---
+
 <h1>Animal Color</h1>
 <table class="table table-hover table-striped">
   <tr>
@@ -14,13 +15,11 @@ title: AnimalColor
     <th>
       <a href="{{ animal.url }}"> {{ animal.title }} </a>
     </th>
-    {% for color in site.data.colors %}
-    {% if animal.colors contains color %}
+    {% for color in site.data.colors %} {% if animal.colors contains color %}
     <td>○</td>
     {% else %}
     <td>−</td>
-    {% endif %}
-    {% endfor %}
+    {% endif %} {% endfor %}
   </tr>
   {% endfor %}
 </table>

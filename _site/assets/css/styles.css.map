@@ -7,8 +7,8 @@
 	],
 	"sourcesContent": [
 		"@import \"main\";",
-		".current {\n  color: green;\n}"
+		".current {\n  color: green;\n}\n\na {\n  color: rgb(51, 122, 183);\n  text-decoration-line: none;\n  text-decoration-thickness: initial;\n  font-weight: 400;\n}\n\na:focus,\na:hover {\n  color: #23527c;\n  text-decoration-line: underline;\n  text-decoration-thickness: initial;\n  font-weight: 400;\n}\n"
 	],
 	"names": [],
-	"mappings": "ACAA,AAAA,QAAQ,CAAC,EACP,KAAK,EAAE,KAAK,GACb"
+	"mappings": "ACAA,AAAA,QAAQ,CAAC,EACP,KAAK,EAAE,KAAK,GACb;;AAED,AAAA,CAAC,CAAC,EACA,KAAK,EAAE,OAAiB,EACxB,oBAAoB,EAAE,IAAI,EAC1B,yBAAyB,EAAE,OAAO,EAClC,WAAW,EAAE,GAAG,GACjB;;AAED,AAAA,CAAC,CAAC,KAAK,EACP,CAAC,CAAC,KAAK,CAAC,EACN,KAAK,EAAE,OAAO,EACd,oBAAoB,EAAE,SAAS,EAC/B,yBAAyB,EAAE,OAAO,EAClC,WAAW,EAAE,GAAG,GACjB"
 }
