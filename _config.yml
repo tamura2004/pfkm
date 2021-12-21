@@ -3,6 +3,8 @@ collections:
     output: true
   animals:
     output: true
+  builds:
+    output: true
 
 defaults:
   - scope:
@@ -10,6 +12,11 @@ defaults:
       type: "authors"
     values:
       layout: "author"
+  - scope:
+      path: ""
+      type: "builds"
+    values:
+      layout: "build"
   - scope:
       path: ""
       type: "posts"

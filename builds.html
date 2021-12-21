@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<h2>Builds</h2>
+<ul>
+  {% for build in site.builds %}
+    <li>
+      <a href="{{ build.url }}">{{ build.title }}</a>
+    </li>
+  {% endfor %}
+</ul>

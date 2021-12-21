@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<div class="row">
+  <div class="col-sm-4">
+    <h2>能力値</h2>
+    <table class="table table-hover table-striped">
+      {% for row in page.ability %}
+      <tr>
+        <th>{{ row[0] }}</th>
+        <td>{{ row[1] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="col-sm-4">
+    <h2>セーヴ</h2>
+    <table class="table table-hover table-striped">
+      {% for row in page.save %}
+      <tr>
+        <th>{{ row[0] }}</th>
+        <td>{{ row[1] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <div class="col-sm-4">
+    <h2>戦闘</h2>
+    <table class="table table-hover table-striped">
+      {% for row in page.battle %}
+      <tr>
+        <th>{{ row[0] }}</th>
+        <td>{{ row[1] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+<h2>レベルアップ</h2>
+<table class="table table-hover table-striped">
+  {% for entry in page.class %} {% assign lv = entry[0] %} {% assign cls =
+  entry[1] %}
+  <tr class="row">
+    <th class="col-sm-1">{{ lv }}</th>
+    <td class="col-sm-3">{{ cls }}</td>
+    <td class="col-sm-8">
+      {% for feat in page.feats[lv] %}
+      <span>《{{ feat }}》</span>
+      {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h2>呪文</h2>
+<table class="table table-hover table-striped">
+  {% for entry in page.spells %} {% assign lv = entry[0] %} {% assign spells =
+  entry[1] %}
+  <tr class="row">
+    <th class="col-sm-1">{{ lv }}</th>
+    <td class="col-sm-11">
+      {% for spell in spells %}
+      <span>〈{{ spell }}〉</span>
+      {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{{ page.content | markdownfy }}
