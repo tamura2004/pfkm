@@ -1,0 +1,16 @@
+---
+books:
+- aaa
+- ccc
+- bbb
+- aaa
+- bbb
+- aaa
+---
+
+{% assign acc = "" %}
+{% for book in page.books %}
+{% assign acc = acc | append: "," | append: book %}
+{% assign num = acc | split: "," | where_exp: "v", "v == book" | size %}
+<div><span>{{book}}</span>&nbsp;<span>{{num}}</span></div>
+{% endfor %}
