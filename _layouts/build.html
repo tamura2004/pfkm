@@ -42,13 +42,17 @@ layout: default
 
 <h2>レベルアップ</h2>
 <table class="table table-hover table-striped">
-  {% for entry in page.class %} {% assign lv = entry[0] %} {% assign cls =
-  entry[1] %}
+  {% assign classes = "" %}
+  {% for class in page.class %}
+  {% assign lv = forloop.index %}
+  {% assign i = forloop.index0 %}
+  {% assign classes = classes | append: "," | append: class %}
+  {% assign num = classes | split: "," | where_exp: "v", "v == class" | size %}
   <tr class="row">
     <th class="col-sm-1">{{ lv }}</th>
-    <td class="col-sm-3">{{ cls }}</td>
+    <td class="col-sm-3">{{ class }}{{ num }}</td>
     <td class="col-sm-8">
-      {% for feat in page.feats[lv] %}
+      {% for feat in page.feats[i] %}
       <span>《{{ feat }}》</span>
       {% endfor %}
     </td>
