@@ -42,23 +42,36 @@ layout: default
 
 <h2>レベルアップ</h2>
 <table class="table table-hover table-striped">
-  {% assign classes = "" %}
+  {% assign xs = "" | split: "" %}
+  {% assign ys = page.feats %}
   {% for entry in page.levelup %}
-  {% assign class = entry["class"] %}
-  {% assign feats = entry["feats"] %}
+  {% capture odd %}{% cycle "odd", "even" %}{% endcapture %}
+  {% assign class = entry.first %}
+  {% assign feats = entry | shift %}
+  {% assign xs = xs | push: class %}
+  {% assign class_lv = xs | where_exp: "v", "v == class" | size %}
   {% assign lv = forloop.index %}
-  {% assign i = forloop.index0 %}
   <tr class="row">
     <th class="col-sm-1">{{ lv }}</th>
-    <td class="col-sm-3">{{ class }}</td>
+    <td class="col-sm-3">{{ class }}{{ class_lv }}</td>
     <td class="col-sm-8">
-      {% for feat in feats %}
+      {% if lv == 1 and page.race == "人間" %}
+      {% assign feat = ys.first %}
+      {% assign ys = ys | shift %}
       <span>《{{ feat }}》</span>
-      {% endfor %}
-      {% for feat in page.feats %}
-      {% assign j = forloop.index | times: 2 | minus: 1 %}
-      {% if lv == j %}
-      <span>《{{j}}:{{ feat }}》</span>
+      {% endif %}
+      {% if odd == "odd" %}
+      {% assign feat = ys.first %}
+      {% assign ys = ys | shift %}
+      <span>《{{ feat }}》</span>
+      {% endif %}
+      {% for feat in feats %}
+      {% if feat == "特技" %}
+      {% assign f = ys.first %}
+      {% assign ys = ys | shift %}
+      <span>《{{ f }}》</span>
+      {% else %}
+      <span>《{{ feat }}》</span>
       {% endif %}
       {% endfor %}
     </td>
