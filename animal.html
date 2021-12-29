@@ -1,25 +1,49 @@
 ---
 title: AnimalColor
+lvup:
+- [dog, bag, 赤]
+- [dog, 白, bag]
+- [cat, bag]
+- [cat, 青]
+- [dog, 青, bag]
+feats:
+- one
+- two
+- three
+- four
+- five
+- six
+- seven
+- four
 ---
 
-<h1>Animal Color</h1>
-<table class="table table-hover table-striped">
-  <tr>
-    <th>-</th>
-    {% for color in site.data.colors %}
-    <th>{{ color }}</th>
-    {% endfor %}
-  </tr>
-  {% for animal in site.animals %}
-  <tr>
-    <th>
-      <a href="{{ animal.url }}"> {{ animal.title }} </a>
-    </th>
-    {% for color in site.data.colors %} {% if animal.colors contains color %}
-    <td>○</td>
+<ol>
+  {% assign xs = "" | split: "" %}
+  {% assign ys = page.feats %}
+  {% for lvup in page.lvup %}
+  {% capture odd %}{% cycle "odd", "even" %}{% endcapture %}
+  {% assign class = lvup.first %}
+  {% assign feats = lvup | shift %}
+  {% assign xs = xs | push: class %}
+  {% assign num = xs | where_exp: "v", "v == class" | size %}
+  <li>
+    <span>{{ class }}</span>
+    <span>{{ num }}</span>
+    {{ odd | inspect }}
+    {% if odd == "odd" %}
+    {% assign f = ys.first %}
+    {% assign ys = ys | shift %}
+    <span>{{ f }}</span>
+    {% endif %}
+    {% for feat in feats %}
+    {% if feat == "bag" %}
+    {% assign f = ys.first %}
+    {% assign ys = ys | shift %}
+    <span>{{ f }}</span>
     {% else %}
-    <td>−</td>
-    {% endif %} {% endfor %}
-  </tr>
+    <span>{{ feat }}</span>
+    {% endif %}
+    {% endfor %}
+  </li>
   {% endfor %}
-</table>
+</ol>
